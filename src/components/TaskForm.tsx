@@ -9,8 +9,16 @@ const TaskForm: FC = () => {
 
   const handleSubmit = (ev: FormEvent) => {
     ev.preventDefault();
-    dispatch(addNewTask(taskName));
+    // dispatch(addNewTask(taskName));
+    handleMultiple();
     setTaskName('');
+  };
+
+  const handleMultiple = () => {
+    const seperated = taskName.split(',');
+    seperated.forEach((taskName) => {
+      dispatch(addNewTask(taskName));
+    });
   };
 
   return (
